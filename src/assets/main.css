@@ -1,0 +1,19 @@
+@import url("https://fonts.cdnfonts.com/css/arial-2");
+@import "tailwindcss";
+
+body {
+  background-image: url("Rectangle.png");
+  background-size: cover;
+}
+
+h2,
+p,
+b,
+a,
+option {
+  font-family: "Arial", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+  text-wrap: pretty;
+}
