@@ -1,0 +1,28 @@
+[
+  {
+    "id": "q1",
+    "type": "single",
+    "text": "Найдите производную: $f(x)=x^2$",
+    "options": ["A", "B", "C"],
+    "correct": [1]
+  },
+  {
+    "id": "q2",
+    "type": "multiple",
+    "text": "Выберите верное равенство: $$\\int_0^1 x\\,dx = \\frac{1}{2}$$",
+    "options": ["x", "y", "z"],
+    "correct": [0, 2]
+  },
+  {
+    "id": "q3",
+    "type": "text",
+    "text": "Напишите ответ"
+  },
+  {
+    "id": "q4",
+    "type": "code",
+    "language": "python",
+    "text": "Реализуйте функцию",
+    "correct": null
+  }
+]

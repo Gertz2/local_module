@@ -1,0 +1,55 @@
+@import url("https://fonts.cdnfonts.com/css/arial-2");
+@import "tailwindcss";
+
+body {
+  background-image: url("Rectangle.png");
+  background-size: cover;
+}
+
+h2,
+h3,
+p,
+b,
+a,
+option,
+span {
+  font-family: "Arial", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+
+h3 {
+  font-size: var(--text-3xl);
+  line-height: var(--text-3xl--line-height);
+}
+
+p,
+b,
+a,
+option,
+span {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+}
+
+.course-title {
+  font-size: var(--text-3xl);
+  line-height: var(--text-3xl--line-height);
+  font-weight: 700;
+  margin-bottom: calc(var(--spacing) * 3);
+  margin-top: calc(var(--spacing) * 6);
+  margin-left: calc(var(--spacing) * 2);
+}
+
+.bread-crumbs {
+  font-size: var(--text-base); /* 1rem (16px) */
+  line-height: var(--text-base--line-height);
+  text-decoration-color: var(--color-gray-500);
+}
+
+.course-name {
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+}
