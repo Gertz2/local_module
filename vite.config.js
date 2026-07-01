@@ -6,7 +6,6 @@ import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 export default defineConfig({
-  base: "/local_module/",
   plugins: [vue(), tailwindcss(), vueDevTools()],
   resolve: {
     alias: {
