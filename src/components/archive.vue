@@ -18,7 +18,7 @@ const hasArchivedCourses = computed(() => archivedCourses.value.length > 0);
             class="relative mb-2 p-6 bg-white rounded-[1vw] shadow-2xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-3xl transition-all duration-300 border border-gray-100 flex flex-col"
           >
             <h2
-              class="absolute text-xl -top-5 left-6 px-3 py-2 border-1 border-black rounded-2xl bg-[url('/Rectangle.png')]"
+              class="absolute text-xl -top-5 left-6 px-3 py-2 border-1 border-black rounded-2xl bg-[url('./Rectangle.png')]"
             >
               {{ course.subject }}
             </h2>

@@ -192,7 +192,7 @@ const removeFile = (index) => {
         </div>
 
         <h2
-          class="text-black-700 course-name md:course-title lg:course-title absolute -top-5 left-4 sm:left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('/Rectangle.png')] max-w-[calc(100%-2rem)] break-words"
+          class="text-black-700 course-name md:course-title lg:course-title absolute -top-5 left-4 sm:left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('./Rectangle.png')] max-w-[calc(100%-2rem)] break-words"
         >
           <template v-if="isEditingCourse">
             <input

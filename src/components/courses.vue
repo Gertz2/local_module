@@ -326,7 +326,7 @@ watch(
                 </div>
 
                 <h2
-                  class="text-black-700 text-md md:course-name lg:course-name absolute -top-6 left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('/Rectangle.png')]"
+                  class="text-black-700 text-md md:course-name lg:course-name absolute -top-6 left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('./Rectangle.png')]"
                 >
                   <template v-if="editingCourse === course.course_id">
                     <input
