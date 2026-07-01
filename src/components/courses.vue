@@ -216,9 +216,7 @@ watch(
 <template>
   <CoursesPageSkeleton v-if="isLoading" />
   <div v-else class="relative flex flex-col">
-    <div
-      class="flex justify-between w-full px-4 md:w-4/5 md:px-0 mx-auto mt-10"
-    >
+    <div class="flex justify-between w-4/5 md:px-0 mx-auto mt-10">
       <button
         @click="toggleGlobalEditing"
         class="px-4 py-2 bg-gray-400 text-white rounded-lg shadow-md hover:bg-gray-500 transition cursor-pointer"

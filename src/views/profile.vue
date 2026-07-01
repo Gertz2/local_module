@@ -206,11 +206,14 @@ watch(
 
 <template>
   <ProfilePageSkeleton v-if="isLoading" />
-  <div v-else class="grid auto-rows-auto grid-cols-3 gap-5 mt-20 pr-8">
+  <div
+    v-else
+    class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-5 mt-4 lg:mt-20 px-4 sm:px-6 lg:pr-8 overflow-x-hidden"
+  >
     <div
-      class="sticky top-20 self-start row-start-1 row-span-3 flex flex-col items-center p-2 ml-20 border border-gray-100 rounded-[2vw] bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
+      class="w-full lg:w-auto sticky lg:top-20 self-start lg:row-start-1 lg:row-span-3 flex flex-col items-center p-4 lg:p-2 lg:ml-20 border border-gray-100 rounded-2xl bg-white shadow-xl transition"
     >
-      <div class="relative mt-6 w-40 h-40 mx-auto">
+      <div class="relative mt-4 w-32 h-32 sm:w-40 sm:h-40 mx-auto">
         <img
           class="w-full h-full rounded-full border border-grey-300 object-cover"
           :src="profilePhoto"
@@ -229,10 +232,10 @@ watch(
           Загрузить
         </button>
       </div>
-      <p class="mt-4 text-2xl text-center">
+      <p class="mt-4 text-xl sm:text-2xl text-center">
         {{ FIO }}
       </p>
-      <p class="mt-2 text-lg text-center">Должность: {{ post }}</p>
+      <p class="mt-2 text-base sm:text-lg text-center">Должность: {{ post }}</p>
       <div
         v-if="isEditingProfile"
         class="mt-10 flex flex-col items-center space-y-4"
@@ -291,16 +294,16 @@ watch(
       </button>
     </div>
     <div
-      class="p-2 border border-gray-100 rounded-[2vw] m-auto w-49/50 h-full bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
+      class="p-4 border border-gray-100 rounded-2xl w-full h-full bg-white shadow-xl transition"
     >
-      <h2 class="ml-2 mt-6 mb-3 text-3xl font-bold">
+      <h2 class="mt-4 p-4 mb-3 text-xl sm:text-2xl lg:text-3xl font-bold">
         Статус выполненых заданий
       </h2>
-      <div class="flex flex-wrap justify-center gap-4 p-4">
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 p-2 sm:p-4">
         <div
           v-for="(status, index) in taskStatus"
           :key="index"
-          class="flex flex-col items-center p-4 ml-5 border border-gray-300 rounded-[1.5vw] shadow-md w-full sm:w-1/2 lg:w-1/4"
+          class="flex flex-col items-center p-4 border border-gray-300 rounded-2xl shadow-md w-full sm:w-1/2 lg:w-1/4 min-w-0"
         >
           <div class="relative">
             <div
@@ -310,38 +313,42 @@ watch(
               }"
             ></div>
           </div>
-          <p class="text-4xl font-bold mt-4">{{ status.completed }}</p>
-          <p class="text-lg">{{ status.title }}</p>
-          <p class="text-sm text-gray-500 mt-2">
+          <p class="text-4xl text-center font-bold mt-4">
+            {{ status.completed }}
+          </p>
+          <p class="text-lg text-center">{{ status.title }}</p>
+          <p class="descripe-course text-center text-gray-500 mt-2">
             из {{ status.total }} завершено
           </p>
         </div>
       </div>
     </div>
     <div
-      class="p-2 border border-gray-100 rounded-[2vw] m-auto w-49/50 h-full bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
+      class="p-4 border border-gray-100 rounded-2xl w-full h-full bg-white shadow-xl transition"
     >
       <div class="p-4">
         <div class="flex justify-between items-center mb-4">
-          <p class="text-3xl font-bold capitalize">
+          <p class="text-xl sm:text-2xl lg:text-3xl font-bold capitalize">
             {{ format(currentMonth, "LLLL yyyy", { locale: ru }) }}
           </p>
           <div class="flex gap-2">
             <button
               @click="prevMonth"
-              class="px-4 py-2 opacity-70 hover:opacity-100 transition cursor-pointer"
+              class="px-2 py-1 sm:px-4 sm:py-2 opacity-70 hover:opacity-100 transition cursor-pointer"
             >
               &lt;
             </button>
             <button
               @click="nextMonth"
-              class="px-4 py-2 opacity-70 hover:opacity-100 transition cursor-pointer"
+              class="px-2 py-1 sm:px-4 sm:py-2 opacity-70 hover:opacity-100 transition cursor-pointer"
             >
               &gt;
             </button>
           </div>
         </div>
-        <div class="grid grid-cols-7 gap-2 text-center text-gray-500 font-bold">
+        <div
+          class="grid grid-cols-7 gap-1 sm:gap-2 text-center text-xs sm:text-sm text-gray-500 font-bold"
+        >
           <span>Пн</span>
           <span>Вт</span>
           <span>Ср</span>
@@ -354,7 +361,7 @@ watch(
           <template v-for="day in daysInMonth" :key="day.formatted">
             <div
               :class="[
-                'p-2 rounded-[1.5vw] text-center cursor-pointer transition',
+                'p-1.5 sm:p-2 rounded-xl text-center cursor-pointer transition text-sm sm:text-base',
                 isSelected(day.formatted) ? 'bg-purple-500 text-white' : '',
                 isInRange(day.formatted) ? 'bg-blue-200' : '',
                 hoveredDate === day.formatted ? 'bg-gray-300' : 'text-gray-700',
@@ -372,13 +379,17 @@ watch(
     <div
       class="p-2 row-span-2 border border-gray-100 rounded-[2vw] m-auto w-49/50 h-full bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
     >
-      <h2 class="ml-2 mt-6 mb-3 text-3xl font-bold">Мои курсы</h2>
-      <div class="flex justify-between px-4">
+      <h2 class="mt-4 p-4 mb-3 text-xl sm:text-2xl lg:text-3xl font-bold">
+        Мои курсы
+      </h2>
+      <div
+        class="flex flex-col sm:flex-row gap-2 sm:justify-between px-2 sm:px-4"
+      >
         <button
           :class="{
-            'cursor-pointer text-gray-800 border border-gray-300 rounded-[1.5vw] shadow-md p-3 hover:bg-blue-400 transition ':
+            'w-full sm:w-auto cursor-pointer text-gray-800 border border-gray-300 rounded-2xl shadow-md p-3 hover:bg-blue-400 transition':
               activeTab === 'active',
-            'cursor-pointer text-gray-800 border border-gray-300 rounded-[1.5vw] shadow-md p-3 hover:bg-blue-400 transition':
+            'w-full sm:w-auto cursor-pointer text-gray-800 border border-gray-300 rounded-2xl shadow-md p-3 hover:bg-blue-400 transition':
               activeTab !== 'active',
           }"
           @click="activeTab = 'active'"
@@ -387,13 +398,12 @@ watch(
         </button>
         <button
           :class="{
-            'cursor-pointer text-gray-800 border border-gray-300 rounded-[1.5vw] shadow-md p-3 hover:bg-blue-400 transition':
+            'w-full sm:w-auto cursor-pointer text-gray-800 border border-gray-300 rounded-2xl shadow-md p-3 hover:bg-blue-400 transition':
               activeTab === 'completed',
-            'cursor-pointer text-gray-800 border border-gray-300 rounded-[1.5vw] shadow-md p-3 hover:bg-blue-400 transition':
+            'w-full sm:w-auto cursor-pointer text-gray-800 border border-gray-300 rounded-2xl shadow-md p-3 hover:bg-blue-400 transition':
               activeTab !== 'completed',
           }"
           @click="activeTab = 'completed'"
-          class="cursor-pointer text-gray-800 border border-gray-300 rounded-[1.5vw] shadow-md p-3 hover:bg-blue-400 transition"
         >
           Завершенные
         </button>
@@ -412,7 +422,7 @@ watch(
             />
             <div class="w-full">
               <p class="text-lg font-medium">{{ course.name }}</p>
-              <div class="w-19/20 h-2 bg-gray-200 rounded-full mt-2 relative">
+              <div class="w-full h-2 bg-gray-200 rounded-full mt-2 relative">
                 <div
                   class="h-full"
                   :class="{
@@ -423,9 +433,7 @@ watch(
                   }"
                   :style="{ width: course.progress + '%' }"
                 ></div>
-                <span
-                  class="absolute -bottom-1 left-full ml-2 text-sm text-gray-600"
-                >
+                <span class="block mt-2 text-right text-sm text-gray-600">
                   {{ course.progress }}%
                 </span>
               </div>
@@ -435,16 +443,18 @@ watch(
       </div>
     </div>
     <div
-      class="p-2 row-span-2 border border-gray-100 rounded-[2vw] m-auto w-49/50 h-full bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
+      class="p-4 row-span-2 border border-gray-100 rounded-2xl m-auto w-full h-full bg-white shadow-xl transition"
     >
-      <h2 class="ml-2 mt-6 mb-3 text-3xl font-bold">Уведомления</h2>
+      <h2 class="mt-4 p-4 mb-3 text-xl sm:text-2xl lg:text-3xl font-bold">
+        Уведомления
+      </h2>
       <div class="flex flex-col gap-4 p-4">
         <div
           v-for="(notification, index) in notifications"
           :key="index"
-          class="flex items-center justify-between p-3 border-t border-gray-200"
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 border-t border-gray-200"
         >
-          <div class="flex items-center gap-4">
+          <div class="flex items-start sm:items-center gap-3 sm:gap-4">
             <div
               class="flex p-2 border border-gray-400 rounded-[1vw] flex-col items-center"
             >

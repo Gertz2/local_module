@@ -53,3 +53,8 @@ span {
   font-size: var(--text-2xl);
   line-height: var(--text-2xl--line-height);
 }
+
+.descripe-course {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+}

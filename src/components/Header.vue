@@ -94,8 +94,10 @@ const goToProfile = () => {
 
 <template>
   <div class="border-b border-gray-500">
-    <header class="flex justify-between w-4/5 m-auto mt-10 pb-10">
-      <div class="flex items-center gap-1">
+    <header
+      class="flex justify-end mr-10 mt-10 sm:justify-between sm:w-4/5 md:w-4/5 lg:w-4/5 sm:m-auto md:m-auto lg:m-auto sm:mt-10 md:mt-10 lg:mt-10 pb-10"
+    >
+      <div class="hidden sm:block flex items-center gap-1">
         <template v-for="(item, index) in breadcrumbs" :key="item.to">
           <router-link :to="item.to" class="text-gray-500 hover:text-black">
             {{ item.label }}

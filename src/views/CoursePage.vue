@@ -149,10 +149,12 @@ const removeFile = (index) => {
   <CoursePageSkeleton v-if="isLoading" />
 
   <div v-else class="pb-10 relative flex flex-col grid grid-cols-1">
-    <div class="flex justify-between w-full px-4 md:w-4/5 md:px-0 mx-auto mt-5">
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between gap-2 w-full px-4 md:w-4/5 md:px-0 mx-auto mt-5"
+    >
       <button
         @click="toggleGlobalEditing"
-        class="px-4 py-2 bg-gray-400 text-white rounded-lg shadow-md hover:bg-gray-500 transition cursor-pointer"
+        class="w-full sm:w-auto px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-md hover:bg-gray-300 transition cursor-pointer"
       >
         {{ isEditingGlobal ? "Завершить редактирование" : "Редактировать" }}
       </button>
@@ -167,7 +169,7 @@ const removeFile = (index) => {
 
     <div
       v-if="!isHiddenCourse || isEditingGlobal"
-      class="p-2 flex justify-between border border-gray-100 rounded-[2vw] w-full px-4 md:w-4/5 md:px-0 mx-auto mt-20 bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
+      class="p-2 flex justify-between border border-gray-100 rounded-[2vw] w-full px-4 sm:w-4/5 md:w-4/5 md:px-0 mx-auto mt-20 bg-white shadow-xl hover:-translate-y-1 hover:-translate-x-1 hover:shadow-xl transition"
     >
       <div class="relative flex flex-col w-full">
         <div class="relative flex space-x-2">
@@ -176,7 +178,7 @@ const removeFile = (index) => {
             src="/editing.png"
             @click="startEditingCourse"
             alt="Редактировать"
-            class="absolute top-1 right-1 cursor-pointer w-5 h-5 opacity-60 hover:opacity-100 transition"
+            class="absolute top-2 right-2 sm:top-1 sm:right-1 cursor-pointer w-5 h-5 opacity-60 hover:opacity-100 transition"
             title="Редактировать"
           />
           <img
@@ -184,13 +186,13 @@ const removeFile = (index) => {
             src="/hide.png"
             @click="toggleCourseHidden"
             alt="Скрыть"
-            class="absolute top-1 right-12 cursor-pointer w-5 h-5 opacity-60 hover:opacity-100 transition"
+            class="absolute top-2 right-10 sm:top-1 sm:right-12 cursor-pointer w-5 h-5 opacity-60 hover:opacity-100 transition"
             title="Скрыть"
           />
         </div>
 
         <h2
-          class="text-black-700 course-name md:course-title lg:course-title absolute -top-6 left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('/Rectangle.png')]"
+          class="text-black-700 course-name md:course-title lg:course-title absolute -top-5 left-4 sm:left-6 px-3 py-1 border-1 border-black rounded-2xl bg-[url('/Rectangle.png')] max-w-[calc(100%-2rem)] break-words"
         >
           <template v-if="isEditingCourse">
             <input
@@ -207,7 +209,11 @@ const removeFile = (index) => {
           class="flex items-center cursor-pointer"
           @click="isCollapsedCourse = !isCollapsedCourse"
         >
-          <img src="/Icon2.png" alt="toggle" class="ml-8 mt-6 mb-3" />
+          <img
+            src="/Icon2.png"
+            alt="toggle"
+            class="ml-4 sm:ml-8 mt-4 sm:mt-6 mb-3"
+          />
           <p class="course-title">ОБЩЕЕ</p>
         </div>
 
@@ -221,15 +227,15 @@ const removeFile = (index) => {
               />
             </p>
 
-            <p class="my-0.1 ml-13 mr-11 text-2xl">
+            <p class="my-2 mx-4 sm:mx-11 text-lg sm:text-2xl break-words">
               Описание:
               <input
                 v-model="courseDescription"
-                class="ml-2 border border-gray-300 rounded px-2 py-1 w-[70%]"
+                class="ml-2 border border-gray-300 rounded px-2 py-1 w-full sm:w-[70%]"
               />
             </p>
 
-            <p class="my-0.1 ml-13 mr-11 text-2xl">
+            <p class="my-2 mx-4 sm:mx-11 text-lg sm:text-2xl break-words">
               Преподаватель:
               <input
                 v-model="courseTeacher"
@@ -237,7 +243,7 @@ const removeFile = (index) => {
               />
             </p>
 
-            <p class="my-0.1 ml-13 mr-11 text-2xl">
+            <p class="my-2 mx-4 sm:mx-11 text-lg sm:text-2xl break-words">
               Направление:
               <input
                 v-model="courseDirection"
@@ -245,7 +251,7 @@ const removeFile = (index) => {
               />
             </p>
 
-            <p class="my-0.1 ml-13 mr-11 text-2xl">
+            <p class="my-2 mx-4 sm:mx-11 text-lg sm:text-2xl break-words">
               Группа:
               <input
                 v-model="courseGroup"
@@ -269,16 +275,18 @@ const removeFile = (index) => {
               />
             </p>
 
-            <div class="flex justify-end gap-2 mr-11 mb-4">
+            <div
+              class="flex flex-col sm:flex-row justify-end gap-2 mx-4 sm:mr-11 mb-4"
+            >
               <button
                 @click="saveCourse"
-                class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition"
+                class="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition"
               >
                 Сохранить
               </button>
               <button
                 @click="cancelCourse"
-                class="px-4 py-2 bg-red-400 hover:bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition cursor-pointer"
+                class="w-full sm:w-auto px-4 py-2 bg-red-400 hover:bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition cursor-pointer"
               >
                 Отмена
               </button>
@@ -350,13 +358,13 @@ const removeFile = (index) => {
               Открыто:
               <input
                 v-model="dateOpenText"
-                class="ml-2 border border-gray-300 rounded px-2 py-1 w-[60%]"
+                class="ml-2 border border-gray-300 rounded px-2 py-1 w-full sm:w-[60%]"
               />
             </p>
 
             <textarea
               v-model="literatureText"
-              class="mx-11 mb-6 p-2 border border-gray-300 rounded-lg h-28"
+              class="mx-4 sm:mx-11 mb-6 p-2 border border-gray-300 rounded-lg h-28 w-[calc(100%-2rem)] sm:w-auto"
             ></textarea>
 
             <div class="mt-4 mx-11">
@@ -399,7 +407,7 @@ const removeFile = (index) => {
 
             <div
               v-if="uploadedLiteratureFiles.length"
-              class="mt-4 ml-13 mr-11 flex flex-col gap-2"
+              class="mt-4 mx-4 sm:mx-11 flex flex-col gap-2"
             >
               <template
                 v-for="(file, index) in uploadedLiteratureFiles"
@@ -409,12 +417,12 @@ const removeFile = (index) => {
                   <img
                     v-if="file.file.type.startsWith('image/')"
                     :src="file.url"
-                    class="cursor-pointer rounded-[1.5vw] mb-10"
+                    class="cursor-pointer rounded-[1.5vw] mb-10 max-w-full h-auto"
                     alt="Превью"
                   />
                   <div
                     v-else
-                    class="flex items-center mt-5 mb-10 underline cursor-pointer text-2xl rounded-[1.5vw] shadow-xl hover:-translate-y-1 hover:-translate-x-1"
+                    class="flex items-center mt-5 mb-10 underline cursor-pointer text-lg sm:text-2xl rounded-[1.5vw] shadow-xl hover:-translate-y-1 hover:-translate-x-1"
                   >
                     <img
                       src="/Icon.png"
@@ -445,11 +453,13 @@ const removeFile = (index) => {
 
         <div v-if="!isCollapsedSubject" class="flex flex-col gap-4">
           <div
-            class="flex flex-col rounded-[1.5vw] mx-5 m-5 shadow-xl hover:-translate-y-1 hover:-translate-x-1 transition"
+            class="flex flex-col rounded-[1.5vw] mx-3 sm:mx-5 my-3 sm:m-5 shadow-xl hover:-translate-y-1 hover:-translate-x-1 transition"
           >
             <div class="flex items-center">
               <img src="/Icon.png" alt="icon" class="my-0.1 ml-11 mr-5 mb-6" />
-              <p class="my-0.1 mr-11 mb-6 text-2xl">
+              <p
+                class="my-0.1 mx-4 sm:mr-11 mb-4 sm:mb-6 text-lg sm:text-2xl break-words"
+              >
                 Таблица разложений некоторых функций в степенные ряды
               </p>
             </div>
@@ -468,16 +478,20 @@ const removeFile = (index) => {
 
           <RouterLink :to="`/test/${1}`" class="no-underline">
             <div
-              class="flex flex-col rounded-[1.5vw] mx-5 m-5 shadow-xl hover:-translate-y-1 hover:-translate-x-1 transition cursor-pointer"
+              class="flex flex-col rounded-[1.5vw] mx-3 sm:mx-5 my-3 sm:m-5 shadow-xl hover:-translate-y-1 hover:-translate-x-1 transition cursor-pointer"
               role="button"
               aria-label="Перейти к тесту"
             >
               <div class="flex items-center p-6">
                 <div class="flex-1">
-                  <p class="my-0.1 mr-11 mb-2 text-2xl font-semibold">
+                  <p
+                    class="my-0.1 mx-4 sm:mr-11 mb-2 text-lg sm:text-2xl font-semibold break-words"
+                  >
                     Тест: Проверка знаний по теме
                   </p>
-                  <p class="my-0.1 mr-11 mb-2 text-lg text-gray-600">
+                  <p
+                    class="my-0.1 mx-4 sm:mr-11 mb-2 text-lg sm:text-2xl font-semibold break-words text-gray-600"
+                  >
                     Время: 10 минут
                   </p>
                 </div>
@@ -524,7 +538,7 @@ const removeFile = (index) => {
           <template v-if="isEditingExam">
             <textarea
               v-model="examDescription"
-              class="mx-11 mb-6 p-2 border border-gray-300 rounded-lg h-28"
+              class="mx-4 sm:mx-11 mb-6 p-2 border border-gray-300 rounded-lg h-28 w-[calc(100%-2rem)] sm:w-auto"
             ></textarea>
 
             <div class="flex justify-end gap-2 mx-11 my-4">
@@ -544,7 +558,9 @@ const removeFile = (index) => {
           </template>
 
           <template v-else>
-            <p class="my-0.1 ml-13 mr-11 mb-6 text-2xl">
+            <p
+              class="my-2 mx-4 sm:mx-11 mb-4 sm:mb-6 text-lg sm:text-2xl break-words"
+            >
               {{ examDescription }}
             </p>
           </template>
